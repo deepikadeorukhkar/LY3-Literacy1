@@ -1,25 +1,25 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Word Family 'o'</title>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Baloo 2', cursive;
+-webkit-tap-highlight-color: transparent;
 }
 
 body{
-font-family:'Patrick Hand',cursive;
-background:#fff7f0;
 overflow:hidden;
-touch-action:none;
+background:#fff7f0;
 }
 
 #intro{
@@ -29,8 +29,8 @@ background:white;
 display:flex;
 justify-content:center;
 align-items:center;
-z-index:9999;
 flex-direction:column;
+z-index:9999;
 }
 
 #intro img{
@@ -40,8 +40,8 @@ max-width:80%;
 
 #intro h1{
 margin-top:20px;
-font-size:40px;
-color:#ff6699;
+color:#ff5a8a;
+font-size:2rem;
 }
 
 #gameContainer{
@@ -49,259 +49,228 @@ display:none;
 width:100vw;
 height:100vh;
 overflow:hidden;
-background:linear-gradient(#dff7ff,#fff6d5);
-position:relative;
+background:linear-gradient(#dff7ff,#fff8ef);
 }
 
 #topBar{
-width:100%;
 background:#ffb6d9;
-padding:10px;
+padding:12px;
 text-align:center;
-font-size:26px;
+font-size:1.4rem;
 font-weight:bold;
-color:#5c2a00;
-box-shadow:0 2px 5px rgba(0,0,0,0.2);
-}
-
-#gameTitle{
-background:white;
-padding:8px;
-margin:10px auto;
-width:90%;
-border-radius:15px;
-font-size:28px;
-text-align:center;
-color:#ff4081;
-font-weight:bold;
+color:#5b2d2d;
 }
 
 #instruction{
-background:#fff;
+background:white;
 padding:10px;
-margin:0 auto 10px;
-width:95%;
-border-radius:15px;
 text-align:center;
-font-size:22px;
-color:#333;
+font-size:1.05rem;
 }
 
-#gameArea{
-position:relative;
-width:100%;
-height:calc(100vh - 160px);
+#content{
+height:calc(100vh - 115px);
 overflow:auto;
-padding-bottom:120px;
+padding:15px;
+text-align:center;
 }
 
-.center{
+h2{
+color:#ff4f81;
+margin-bottom:15px;
+}
+
+.imageBox img{
+width:180px;
+max-width:60vw;
+border-radius:20px;
+background:white;
+padding:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.options{
 display:flex;
 justify-content:center;
-align-items:center;
-}
-
-.optionBtn{
-background:#fff176;
-padding:14px 20px;
-border-radius:20px;
-font-size:28px;
-margin:10px;
-border:none;
-cursor:pointer;
-box-shadow:0 4px 6px rgba(0,0,0,0.2);
-font-family:'Patrick Hand',cursive;
-}
-
-.optionBtn:active{
-transform:scale(0.95);
-}
-
-.feedback{
-position:fixed;
-top:40%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:90px;
-display:none;
-z-index:999;
-}
-
-#restartBtn{
-display:none;
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-padding:16px 28px;
-font-size:28px;
-border:none;
-border-radius:20px;
-background:#ff6699;
-color:white;
-font-family:'Patrick Hand',cursive;
-z-index:1000;
-}
-
-img{
-max-width:100%;
+flex-wrap:wrap;
+gap:15px;
+margin-top:25px;
 }
 
 .balloon{
-width:90px;
-height:120px;
-background:#ff6fa5;
+width:100px;
+height:130px;
+background:#ff6ea8;
 border-radius:50%;
-position:relative;
 display:flex;
-justify-content:center;
 align-items:center;
-font-size:28px;
+justify-content:center;
+font-size:1.4rem;
 font-weight:bold;
 color:white;
+position:relative;
 cursor:pointer;
-margin:10px;
-animation:float 2s infinite ease-in-out;
+animation:float 3s infinite ease-in-out;
 }
 
-.balloon:nth-child(2){
-background:#6ec6ff;
-}
-
-.balloon:nth-child(3){
-background:#81c784;
-}
-
-.balloon:nth-child(4){
-background:#ffd54f;
-}
+.balloon:nth-child(2){background:#ffb347;}
+.balloon:nth-child(3){background:#7ed957;}
+.balloon:nth-child(4){background:#6ec6ff;}
 
 .balloon::after{
 content:'';
 position:absolute;
-bottom:-30px;
+bottom:-35px;
 width:2px;
-height:30px;
+height:35px;
 background:#555;
 }
 
 @keyframes float{
-0%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0);}
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
 }
 
-#dragWords{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:12px;
-padding:20px;
-width:100%;
-}
-
-.dragCard{
+.wordBtn{
+padding:15px 22px;
+font-size:1.4rem;
 background:#fff176;
-padding:14px 20px;
-border-radius:18px;
-font-size:28px;
-font-weight:bold;
-touch-action:none;
-user-select:none;
-cursor:grab;
+border:none;
+border-radius:16px;
+cursor:pointer;
 box-shadow:0 4px 8px rgba(0,0,0,0.2);
-position:relative;
-z-index:10;
-min-width:100px;
-text-align:center;
+}
+
+.feedback{
+font-size:4rem;
+height:60px;
+}
+
+#restartBtn{
+display:none;
+margin:20px auto;
+padding:15px 30px;
+font-size:1.3rem;
+background:#ff5a8a;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* GAME 3 FIXED */
+.garden{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+gap:18px;
+margin-top:20px;
 }
 
 .houseCard{
-background:white;
-border:4px dashed #ffb74d;
-border-radius:20px;
-padding:10px;
-width:140px;
-min-height:180px;
-text-align:center;
-margin:10px;
+background:#fff0c9;
+border-radius:22px;
+padding:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
 
 .houseCard img{
-width:100px;
-height:100px;
+width:90px;
+height:90px;
 object-fit:contain;
 }
 
-.dropZone{
+.dropzone{
 margin-top:10px;
-height:45px;
-border:2px dashed #999;
-border-radius:12px;
+height:50px;
+border:3px dashed #ff5a8a;
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:1.3rem;
+font-weight:bold;
+background:white;
+}
+
+.dragArea{
 display:flex;
 justify-content:center;
-align-items:center;
-font-size:28px;
+flex-wrap:wrap;
+gap:12px;
+margin-top:25px;
+padding-bottom:30px;
+}
+
+.dragWord{
+background:#81d4fa;
+padding:12px 18px;
+border-radius:14px;
+font-size:1.3rem;
 font-weight:bold;
-background:#f8f8f8;
+color:#222;
+box-shadow:0 3px 8px rgba(0,0,0,0.2);
+touch-action:none;
+user-select:none;
+position:relative;
+}
+
+.dragWord.used{
+visibility:hidden;
+}
+
+.letters{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+margin-top:25px;
 }
 
 .letterBtn{
-width:80px;
-height:80px;
-font-size:40px;
+width:70px;
+height:70px;
 border:none;
-border-radius:20px;
-margin:10px;
-background:#81d4fa;
-font-family:'Patrick Hand',cursive;
-}
-
-.wordBox{
-font-size:50px;
+border-radius:50%;
+background:#ffd54f;
+font-size:2rem;
 font-weight:bold;
-margin:20px;
 }
 
 @media(max-width:768px){
 
 #topBar{
-font-size:20px;
-}
-
-#instruction{
-font-size:18px;
-}
-
-.optionBtn{
-font-size:22px;
-padding:12px;
+font-size:1.1rem;
 }
 
 .balloon{
+width:85px;
+height:110px;
+font-size:1.2rem;
+}
+
+.wordBtn{
+font-size:1.15rem;
+padding:12px 16px;
+}
+
+.garden{
+grid-template-columns:repeat(2,1fr);
+}
+
+.houseCard img{
 width:75px;
-height:100px;
-font-size:24px;
+height:75px;
 }
 
-.dragCard{
-font-size:24px;
-min-width:90px;
-}
-
-.houseCard{
-width:120px;
-min-height:160px;
-}
-
-.wordBox{
-font-size:40px;
+.dragWord{
+font-size:1.1rem;
+padding:10px 15px;
 }
 
 .letterBtn{
-width:65px;
-height:65px;
-font-size:34px;
+width:60px;
+height:60px;
+font-size:1.7rem;
 }
 
 }
@@ -317,485 +286,329 @@ font-size:34px;
 </div>
 
 <div id="gameContainer">
-
 <div id="topBar">Word Family 'o'</div>
-
-<div id="gameTitle">Game 1</div>
-
-<div id="instruction"></div>
-
-<div id="gameArea"></div>
-
+<div id="instruction">Loading...</div>
+<div id="content"></div>
 <div class="feedback" id="feedback"></div>
-
-<button id="restartBtn">Play Again</button>
-
-<audio id="correctSound"
-src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/correct.mp3"></audio>
-
-<audio id="wrongSound"
-src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/wrong.mp3"></audio>
-
-<audio id="bgMusic" loop
-src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/background-music.mp3"></audio>
-
+<button id="restartBtn" onclick="location.reload()">🔄 Restart Game</button>
 </div>
+
+<audio id="correctSound" src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/correct.mp3"></audio>
+<audio id="wrongSound" src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/wrong.mp3"></audio>
+<audio id="bgMusic" autoplay loop src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/background-music.mp3"></audio>
 
 <script>
 
-const gameArea=document.getElementById("gameArea");
-const instruction=document.getElementById("instruction");
-const gameTitle=document.getElementById("gameTitle");
-const feedback=document.getElementById("feedback");
-const restartBtn=document.getElementById("restartBtn");
-
-const correctSound=document.getElementById("correctSound");
-const wrongSound=document.getElementById("wrongSound");
-const bgMusic=document.getElementById("bgMusic");
+const content=document.getElementById('content');
+const instruction=document.getElementById('instruction');
+const feedback=document.getElementById('feedback');
 
 function speak(text){
 speechSynthesis.cancel();
-const utter=new SpeechSynthesisUtterance(text);
-utter.rate=0.85;
-speechSynthesis.speak(utter);
+const msg=new SpeechSynthesisUtterance(text);
+msg.rate=0.85;
+speechSynthesis.speak(msg);
 }
 
-function showFeedback(type){
-feedback.style.display='block';
-
-if(type==="correct"){
-feedback.innerHTML="👏";
-correctSound.play();
-}else{
-feedback.innerHTML="❌";
-wrongSound.play();
+function showCorrect(){
+feedback.innerHTML='👏';
+document.getElementById('correctSound').play();
+setTimeout(()=>feedback.innerHTML='',1000);
 }
 
-setTimeout(()=>{
-feedback.style.display='none';
-},1000);
-}
-
-function shuffle(arr){
-return arr.sort(()=>Math.random()-0.5);
+function showWrong(){
+feedback.innerHTML='❌';
+document.getElementById('wrongSound').play();
+setTimeout(()=>feedback.innerHTML='',1000);
 }
 
 setTimeout(()=>{
-document.getElementById("intro").style.display="none";
-document.getElementById("gameContainer").style.display="block";
-bgMusic.volume=0.3;
-bgMusic.play();
+document.getElementById('intro').style.display='none';
+document.getElementById('gameContainer').style.display='block';
 startGame1();
 },5000);
 
-/* ---------------- GAME 1 ---------------- */
+/* GAME 1 */
 
-let game1Words=shuffle([
-{word:"hop"},
-{word:"top"},
-{word:"mop"},
-{word:"cop"}
-]);
-
-let g1Index=0;
+const game1Words=['hop','top','mop','cop'];
+let game1Index=0;
 
 function startGame1(){
+instruction.innerHTML='Game 1: Look at the picture and pop the balloon with the correct word.';
+const word=game1Words[game1Index];
 
-gameTitle.innerHTML="Game 1";
-instruction.innerHTML="Look at the picture and pop the balloon with the correct word.";
-
-const current=game1Words[g1Index];
-
-gameArea.innerHTML=`
-
-<div style="text-align:center;padding:10px;">
-
-<img src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/${current.word}.png"
-style="width:220px;height:220px;object-fit:contain;">
-
-<div style="display:flex;justify-content:center;flex-wrap:wrap;margin-top:20px;">
-
-${shuffle(["hop","top","mop","cop"]).map(word=>`
-<div class="balloon" onclick="checkGame1('${word}')">${word}</div>
-`).join('')}
-
+content.innerHTML=`
+<h2>Game 1</h2>
+<div class="imageBox">
+<img src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/${word}.png">
 </div>
+<div class="options">
+${shuffle([...game1Words]).map(w=>`<div class="balloon" onclick="checkGame1('${w}')">${w}</div>`).join('')}
+</div>`;
 
-</div>
-`;
-
-speak(current.word);
-
+speak(word);
 }
 
 function checkGame1(word){
-
-if(word===game1Words[g1Index].word){
-
-showFeedback("correct");
-
-g1Index++;
-
-if(g1Index<game1Words.length){
-
+if(word===game1Words[game1Index]){
+showCorrect();
+game1Index++;
+if(game1Index<game1Words.length){
 setTimeout(startGame1,1200);
-
 }else{
-
-setTimeout(startGame2,1500);
-
+setTimeout(startGame2,1200);
 }
-
 }else{
-
-showFeedback("wrong");
-speak("Try again");
-
+showWrong();
+}
 }
 
-}
+/* GAME 2 */
 
-/* ---------------- GAME 2 ---------------- */
-
-let game2Words=shuffle([
-"cob","rob","sob","mob"
-]);
-
-let g2Index=0;
+const game2Words=['cob','rob','sob','mob'];
+let game2Index=0;
 
 function startGame2(){
+instruction.innerHTML='Game 2: Look at the picture and choose the correct word.';
+const word=game2Words[game2Index];
 
-gameTitle.innerHTML="Game 2";
-instruction.innerHTML="Look at the picture and choose the correct word.";
-
-const current=game2Words[g2Index];
-
-gameArea.innerHTML=`
-
-<div style="padding:20px;text-align:center;">
-
-<img src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/${current}.png"
-style="width:220px;height:220px;object-fit:contain;">
-
-<div style="margin-top:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:15px;max-width:500px;margin:auto;">
-
-${shuffle(["cob","rob","sob","mob"]).map(word=>`
-<button class="optionBtn" onclick="checkGame2('${word}')">${word}</button>
-`).join('')}
-
+content.innerHTML=`
+<h2>Game 2</h2>
+<div style="background:#fff3cd;padding:20px;border-radius:25px;max-width:700px;margin:auto;">
+<div class="imageBox">
+<img src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/${word}.png">
 </div>
-
+<div style="margin-top:25px;display:grid;grid-template-columns:repeat(2,1fr);gap:15px;">
+${shuffle([...game2Words]).map(w=>`<button class="wordBtn" onclick="checkGame2('${w}')">${w}</button>`).join('')}
 </div>
-`;
+</div>`;
 
-speak(current);
-
+speak(word);
 }
 
 function checkGame2(word){
-
-if(word===game2Words[g2Index]){
-
-showFeedback("correct");
-
-g2Index++;
-
-if(g2Index<game2Words.length){
-
+if(word===game2Words[game2Index]){
+showCorrect();
+game2Index++;
+if(game2Index<game2Words.length){
 setTimeout(startGame2,1200);
-
 }else{
-
-setTimeout(startGame3,1500);
-
+setTimeout(startGame3,1200);
 }
-
 }else{
-
-showFeedback("wrong");
-speak("Try again");
-
+showWrong();
+}
 }
 
-}
+/* GAME 3 FIXED FOR IOS + ANDROID */
 
-/* ---------------- GAME 3 ---------------- */
-
-let game3Data=shuffle([
-{word:"hot"},
-{word:"pot"},
-{word:"dot"},
-{word:"cot"},
-{word:"tot"}
-]);
+const game3Words=['hot','pot','dot','cot','tot'];
+let placedWords=0;
 
 function startGame3(){
 
-gameTitle.innerHTML="Game 3";
-instruction.innerHTML="Look at the picture and drag the correct word to match it.";
+placedWords=0;
 
-gameArea.innerHTML=`
+instruction.innerHTML='Game 3: Look at the picture and drag the correct word to match it.';
 
-<div style="display:flex;flex-wrap:wrap;justify-content:center;padding:10px;" id="houses"></div>
+content.innerHTML=`
+<h2>Game 3</h2>
 
-<div id="dragWords"></div>
-`;
-
-const houses=document.getElementById("houses");
-const dragWords=document.getElementById("dragWords");
-
-game3Data.forEach(item=>{
-
-houses.innerHTML+=`
+<div class="garden">
+${shuffle([...game3Words]).map(word=>`
 <div class="houseCard">
-
-<img src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/${item.word}.png">
-
-<div class="dropZone" data-word="${item.word}"></div>
-
+<img src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/${word}.png">
+<div class="dropzone" data-word="${word}"></div>
 </div>
-`;
-
-});
-
-shuffle([...game3Data]).forEach(item=>{
-
-dragWords.innerHTML+=`
-<div class="dragCard" draggable="true" data-word="${item.word}">
-${item.word}
+`).join('')}
 </div>
-`;
 
-});
+<div class="dragArea">
+${shuffle([...game3Words]).map(word=>`
+<div class="dragWord" draggable="true" data-word="${word}">${word}</div>
+`).join('')}
+</div>`;
 
-enableDragDrop();
-
+setupDragDrop();
 }
 
-function enableDragDrop(){
+function setupDragDrop(){
 
-const draggables=document.querySelectorAll(".dragCard");
-const zones=document.querySelectorAll(".dropZone");
+const drags=document.querySelectorAll('.dragWord');
+const drops=document.querySelectorAll('.dropzone');
 
-draggables.forEach(card=>{
+let activeDrag=null;
 
-card.addEventListener("dragstart",e=>{
-e.dataTransfer.setData("text",card.dataset.word);
+/* DESKTOP */
+drags.forEach(drag=>{
+
+drag.addEventListener('dragstart',e=>{
+activeDrag=drag;
+e.dataTransfer.setData('text/plain',drag.dataset.word);
 });
 
-card.addEventListener("touchstart",touchStart,{passive:false});
-
 });
 
-zones.forEach(zone=>{
+/* DESKTOP DROP */
+drops.forEach(drop=>{
 
-zone.addEventListener("dragover",e=>e.preventDefault());
-
-zone.addEventListener("drop",e=>{
-
+drop.addEventListener('dragover',e=>{
 e.preventDefault();
-
-const word=e.dataTransfer.getData("text");
-
-handleDrop(word,zone);
-
 });
 
-});
 
-}
-
-/* TOUCH SUPPORT */
-
-let dragged=null;
-
-function touchStart(e){
-
-dragged=e.target;
-
-dragged.style.position="fixed";
-dragged.style.zIndex=9999;
-
-moveAt(e.touches[0].pageX,e.touches[0].pageY);
-
-document.addEventListener("touchmove",touchMove,{passive:false});
-document.addEventListener("touchend",touchEnd);
-
-}
-
-function touchMove(e){
-
+drop.addEventListener('drop',e=>{
 e.preventDefault();
+const word=activeDrag.dataset.word;
+checkDrop(word,drop,activeDrag);
+});
 
-moveAt(e.touches[0].pageX,e.touches[0].pageY);
+});
 
+/* MOBILE TOUCH */
+drags.forEach(drag=>{
+
+let clone=null;
+
+const moveAt=(x,y)=>{
+if(clone){
+clone.style.left=(x-50)+'px';
+clone.style.top=(y-25)+'px';
+}
 }
 
-function moveAt(x,y){
+const touchStart=e=>{
+activeDrag=drag;
+clone=drag.cloneNode(true);
+clone.style.position='fixed';
+clone.style.zIndex='9999';
+clone.style.pointerEvents='none';
+clone.style.opacity='0.9';
+document.body.appendChild(clone);
+moveAt(e.touches[0].clientX,e.touches[0].clientY);
+};
 
-dragged.style.left=(x-50)+"px";
-dragged.style.top=(y-30)+"px";
+const touchMove=e=>{
+e.preventDefault();
+moveAt(e.touches[0].clientX,e.touches[0].clientY);
+};
 
-}
-
-function touchEnd(e){
+const touchEnd=e=>{
+if(clone) clone.remove();
 
 const touch=e.changedTouches[0];
 
-const elem=document.elementFromPoint(touch.clientX,touch.clientY);
+let dropped=false;
 
-if(elem && elem.classList.contains("dropZone")){
 
-handleDrop(dragged.dataset.word,elem,dragged);
+drops.forEach(drop=>{
+const rect=drop.getBoundingClientRect();
 
-}else{
+if(
+touch.clientX>rect.left &&
+touch.clientX<rect.right &&
+touch.clientY>rect.top &&
+touch.clientY<rect.bottom
+){
+checkDrop(drag.dataset.word,drop,drag);
+dropped=true;
+}
+});
 
-resetCard(dragged);
+clone=null;
+};
 
+
+drag.addEventListener('touchstart',touchStart,{passive:false});
+drag.addEventListener('touchmove',touchMove,{passive:false});
+drag.addEventListener('touchend',touchEnd);
+
+});
 }
 
-document.removeEventListener("touchmove",touchMove);
-document.removeEventListener("touchend",touchEnd);
+function checkDrop(word,drop,drag){
 
-}
+if(drop.dataset.word===word && drop.innerHTML===''){
 
-function resetCard(card){
+drop.innerHTML=word;
+drag.classList.add('used');
+showCorrect();
+placedWords++;
 
-card.style.position="relative";
-card.style.left="0";
-card.style.top="0";
-
-}
-
-function handleDrop(word,zone,card=null){
-
-if(zone.dataset.word===word && zone.innerHTML===""){
-
-zone.innerHTML=word;
-
-showFeedback("correct");
-
-const removeCard=card || [...document.querySelectorAll(".dragCard")]
-.find(c=>c.dataset.word===word);
-
-removeCard.style.display="none";
-
-const done=[...document.querySelectorAll(".dropZone")]
-.every(z=>z.innerHTML!=='');
-
-if(done){
-
-setTimeout(startGame4,1500);
-
+if(placedWords===5){
+setTimeout(startGame4,1400);
 }
 
 }else{
-
-showFeedback("wrong");
-
-if(card){
-resetCard(card);
+showWrong();
+}
 }
 
-}
+/* GAME 4 */
 
-}
+const game4Data=[
+{img:'fog',correct:'f',options:['d','l','f']},
+{img:'dog',correct:'d',options:['m','j','d']},
+{img:'log',correct:'l',options:['l','f','j']},
+{img:'jog',correct:'j',options:['s','j','t']}
+];
 
-/* ---------------- GAME 4 ---------------- */
-
-let game4Data=shuffle([
-{img:"fog",correct:"f",options:["d","l","f"]},
-{img:"dog",correct:"d",options:["m","j","d"]},
-{img:"log",correct:"l",options:["l","f","j"]},
-{img:"jog",correct:"j",options:["s","j","t"]}
-]);
-
-let g4Index=0;
+let game4Index=0;
 
 function startGame4(){
+instruction.innerHTML='Game 4: Look at the picture and choose the correct letter.';
+const item=game4Data[game4Index];
 
-gameTitle.innerHTML="Game 4";
-instruction.innerHTML="Look at the picture and choose the correct letter.";
-
-const current=game4Data[g4Index];
-
-gameArea.innerHTML=`
-
-<div style="text-align:center;padding:20px;">
-
-<img src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/${current.img}.png"
-style="width:220px;height:220px;object-fit:contain;">
-
-<div class="wordBox">_og</div>
-
-<div>
-
-${shuffle(current.options).map(letter=>`
-<button class="letterBtn"
-onclick="checkGame4('${letter}')">${letter}</button>
-`).join('')}
-
+content.innerHTML=`
+<h2>Game 4</h2>
+<div class="imageBox">
+<img src="https://raw.githubusercontent.com/deepikadeorukhkar/LY3-Literacy1/main/word-family-o/assets/${item.img}.png">
 </div>
+<h1 style="font-size:4rem;margin-top:15px;">_og</h1>
+<div class="letters">
+${shuffle([...item.options]).map(letter=>`<button class="letterBtn" onclick="checkGame4('${letter}')">${letter}</button>`).join('')}
+</div>`;
 
-</div>
-`;
-
-speak(current.img);
-
+speak(item.img);
 }
 
 function checkGame4(letter){
+const item=game4Data[game4Index];
 
-if(letter===game4Data[g4Index].correct){
-
-showFeedback("correct");
-
-g4Index++;
-
-if(g4Index<game4Data.length){
-
+if(letter===item.correct){
+showCorrect();
+game4Index++;
+if(game4Index<game4Data.length){
 setTimeout(startGame4,1200);
-
 }else{
-
 finishGame();
-
 }
-
 }else{
-
-showFeedback("wrong");
-speak("Try again");
-
+showWrong();
 }
-
 }
 
 function finishGame(){
+instruction.innerHTML='Wonderful Work!';
+content.innerHTML=`
+<div style="margin-top:60px;">
+<h1 style="font-size:4rem;color:#ff4081;">👏 GREAT JOB 👏</h1>
+</div>`;
 
-gameArea.innerHTML=`
-<div class="center" style="flex-direction:column;height:100%;">
-
-<div style="font-size:120px;">👏</div>
-
-<h1 style="font-size:60px;color:#ff4081;">Great Job!</h1>
-
-</div>
-`;
-
-speak("Great job! You completed all games.");
-
-restartBtn.style.display="block";
-
+document.getElementById('restartBtn').style.display='block';
+speak('Great Job');
 }
 
-restartBtn.onclick=()=>{
-
-location.reload();
-
-};
+function shuffle(array){
+for(let i=array.length-1;i>0;i--){
+const j=Math.floor(Math.random()*(i+1));
+[array[i],array[j]]=[array[j],array[i]];
+}
+return array;
+}
 
 </script>
 
 </body>
 </html>
+```
